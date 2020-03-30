@@ -7,7 +7,7 @@ import './VideoCard.css';
 const baseRoute = routes.baseRoute;
 
 const VideoCard = ({ id, title, imgUrl, createdDate }) => {
-    const gUrl = imgUrl || 'https://as2.ftcdn.net/jpg/02/56/58/31/500_F_256583172_kTP1xZVrVevahIk7P5wsr8VUgeC3X2q8.jpg';
+    const gUrl = imgUrl || 'https://i.imgur.com/0FX7ZPe.jpg';
     return (
         <Card as={Link} href={`${baseRoute}/watch/${id}`} to={`${baseRoute}/watch/${id}`} className="video-card">
             <Image className="fixed-height" size="medium" src={gUrl} wrapped ui={false} />
