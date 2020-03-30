@@ -1,11 +1,13 @@
 import React, { useContext, useEffect, useState } from 'react';
-import { withRouter } from 'react-router';
+import { useParams } from 'react-router';
 import { Header, Container, Segment, Image, Item, Embed } from 'semantic-ui-react';
 import { DataContext } from '../components/DataProvider';
 
-const WatchVideo = ({ match }) => {
+const WatchVideo = () => {
     const values = useContext(DataContext);
-    const item = values.data.filter(d => match.params.name === d.id)[0];
+    const { name } = useParams();
+    
+    const item = values.data.filter(d => name === d.id)[0];
     const [ imdbInfo, setImdbInfo ] = useState(null);
 
     useEffect(() => {
@@ -69,4 +71,4 @@ const WatchVideo = ({ match }) => {
     );
 };
 
-export default withRouter(WatchVideo);
+export default WatchVideo;
