@@ -1,5 +1,5 @@
 const routes = {
-  baseRoute: '/ucinema'
+  baseRoute: ''
 };
 
 export default routes;
