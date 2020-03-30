@@ -8,7 +8,7 @@ const Movies = () => {
     const movies = values.data.filter(item => item.category === 'movie');
 
     return (
-        <Container>
+        <Container style={{ marginTop: '7em' }}>
             <VideoCardGroup list={movies} />
         </Container>
     );

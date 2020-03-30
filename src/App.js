@@ -14,7 +14,7 @@ const baseRoute = routes.baseRoute;
 function App() {
   return (
     <Router>
-      <Segment>
+      <div>
         <AppMenu />
         <Switch>
           <Route exact path={`${baseRoute}/`}>
@@ -30,7 +30,7 @@ function App() {
             <WatchVideo />
           </Route>
         </Switch>
-      </Segment>
+      </div>
     </Router>
   );
 }

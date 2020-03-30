@@ -1,7 +1,7 @@
 .ui.cards>.video-card {
   display: inline-block;
   margin: .875em .875em;
-  width: 165px;
+  width: 128px;
 }
 .ui.card>.image, .ui.cards>.card>.fixed-height {
   height: 165px;

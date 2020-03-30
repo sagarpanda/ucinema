@@ -25,7 +25,7 @@ const AppMenu = ({ location }) => {
     }, [history]);
     
     return (
-        <Menu inverted>
+        <Menu fixed='top' inverted>
           <Menu.Item header>uCinema</Menu.Item>
           <Menu.Item
             as={Link}
