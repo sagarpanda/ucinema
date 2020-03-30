@@ -7,6 +7,9 @@ import Home from './containers/Home';
 import Movies from './containers/Movies';
 import TvSeries from './containers/TvSeries';
 import WatchVideo from './containers/WatchVideo';
+import routes from "./utils/routes"
+
+const baseRoute = routes.baseRoute;
 
 function App() {
   return (
@@ -14,16 +17,16 @@ function App() {
       <Segment>
         <AppMenu />
         <Switch>
-          <Route exact path="/">
+          <Route exact path={`${baseRoute}/`}>
             <Home />
           </Route>
-          <Route path="/movies">
+          <Route path={`${baseRoute}/movies`}>
             <Movies />
           </Route>
-          <Route path="/tv-series">
+          <Route path={`${baseRoute}/tv-series`}>
             <TvSeries />
           </Route>
-          <Route path="/watch/:name">
+          <Route path={`${baseRoute}/watch/:name`}>
             <WatchVideo />
           </Route>
         </Switch>
