@@ -1,26 +1,14 @@
 import React, { useContext } from 'react';
-import { Container, Card } from 'semantic-ui-react';
+import { Container } from 'semantic-ui-react';
 import { DataContext } from '../components/DataProvider';
-import VideoCard from '../components/VideoCard';
+import VideoCardGroup from '../components/VideoCardGroup';
 
 const Home = () => {
     const values = useContext(DataContext);
     
     return (
         <Container>
-            <Card.Group>
-                {
-                    values.data.map(item => (
-                        <VideoCard
-                            key={item.id}
-                            id={item.id}
-                            title={item.title}
-                            imgUrl={item.imgUrl}
-                            createdDate={item.createdDate}
-                        />
-                    ))
-                }
-            </Card.Group>
+            <VideoCardGroup list={values.data} />
         </Container>
     );
 };

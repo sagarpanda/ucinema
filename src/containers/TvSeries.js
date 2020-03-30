@@ -1,10 +1,15 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { Container } from 'semantic-ui-react';
+import { DataContext } from '../components/DataProvider';
+import VideoCardGroup from '../components/VideoCardGroup';
 
 const TvSeries = () => {
+    const values = useContext(DataContext);
+    const series = values.data.filter(item => item.category === 'series');
+
     return (
         <Container>
-            TvSeries - Work In Progress
+            <VideoCardGroup list={series} />
         </Container>
     );
 };
