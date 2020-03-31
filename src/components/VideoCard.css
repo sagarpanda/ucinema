@@ -1,3 +1,6 @@
+.ui.cards {
+  justify-content: center;
+}
 .ui.cards>.video-card {
   display: inline-block;
   margin: .875em .875em;

@@ -7,7 +7,7 @@ const Home = () => {
     const values = useContext(DataContext);
     
     return (
-        <Container style={{ marginTop: '7em' }}>
+        <Container>
             <VideoCardGroup list={values.data} />
         </Container>
     );

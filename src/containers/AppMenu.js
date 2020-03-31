@@ -1,30 +1,22 @@
-import React, { useState, useCallback, useContext } from 'react';
-import { Menu, Search } from 'semantic-ui-react';
+import React, { useContext } from 'react';
+import { Menu, Search, Responsive, Container } from 'semantic-ui-react';
 import { withRouter } from "react-router";
-import { Link, useHistory } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { DataContext } from '../components/DataProvider';
-import routes from "../utils/routes"
+import routes from "../utils/routes";
+import useSearch from '../hooks/useSearch';
 
 const baseRoute = routes.baseRoute;
+const bottomSpacing = '20px';
 
 const AppMenu = ({ location }) => {
     const activeItem = location.pathname;
     const values = useContext(DataContext);
-    const history = useHistory();
 
-    const [ data, setData ] = useState({ loading: false, value: '', results: [] });
-
-    const handleSearchChange = useCallback((e, { value }) => {
-      setData({ loading: true, value, results: [] });
-      const results = values.data.filter(item => item.title.toLowerCase().indexOf(value) > -1);
-      setData({ loading: false, value, results });
-    }, [values]);
-    const handleResultSelect = useCallback((e, { result }) => {
-      setData({ loading: false, value: '', results: [] });
-      history.push(`/watch/${result.id}`);
-    }, [history]);
+    const { data, handleSearchChange, handleResultSelect } = useSearch(values.data);
     
     return (
+      <>
         <Menu fixed='top' inverted>
           <Menu.Item header>uCinema</Menu.Item>
           <Menu.Item
@@ -50,16 +42,38 @@ const AppMenu = ({ location }) => {
           />
           <Menu.Menu position='right'>
             <Menu.Item>
-              <Search
+              <Responsive
+                as={Search}
                 loading={data.loading}
                 results={data.results}
                 value={data.value}
                 onSearchChange={handleSearchChange}
                 onResultSelect={handleResultSelect}
+                minWidth={550}
               />
             </Menu.Item>
           </Menu.Menu>
         </Menu>
+        <Responsive
+          as={Container}
+          maxWidth={550}
+          style={{ padding: `${bottomSpacing} 0`, marginTop: '40px' }}>
+          <Search
+            loading={data.loading}
+            results={data.results}
+            value={data.value}
+            onSearchChange={handleSearchChange}
+            onResultSelect={handleResultSelect}
+            minWidth={550}
+            input={{ style: { width: '100%' } }}
+          />
+        </Responsive>
+        <Responsive
+          as="div"
+          minWidth={550}
+          style={{ paddingBottom: bottomSpacing, marginTop: '64px' }}
+        />
+      </>
     );
 };
 

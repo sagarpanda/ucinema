@@ -1,5 +1,4 @@
 import React from 'react';
-import { Segment } from 'semantic-ui-react';
 import { HashRouter as Router, Switch, Route } from "react-router-dom";
 import 'semantic-ui-css/semantic.min.css';
 import AppMenu from './containers/AppMenu';

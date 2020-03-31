@@ -21,7 +21,7 @@ const WatchVideo = () => {
     const extras = item && item.widerImgUrl ? { placeholder: item.widerImgUrl } : {};
 
     return (
-        <Container style={{ marginTop: '7em' }}>
+        <Container>
             { values.isLoading && (
                 <Segment loading>
                     <Image src='https://react.semantic-ui.com/images/wireframe/paragraph.png' />
