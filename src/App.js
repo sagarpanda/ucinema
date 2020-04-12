@@ -25,7 +25,7 @@ function App() {
           <Route path={`${baseRoute}/tv-series`}>
             <TvSeries />
           </Route>
-          <Route path={`${baseRoute}/watch/:name`}>
+          <Route path={`${baseRoute}/watch/:name/:subname?`}>
             <WatchVideo />
           </Route>
         </Switch>

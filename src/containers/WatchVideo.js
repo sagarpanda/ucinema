@@ -1,13 +1,37 @@
 import React, { useContext, useEffect, useState } from 'react';
 import { useParams } from 'react-router';
-import { Header, Container, Segment, Image, Item, Embed } from 'semantic-ui-react';
+import { Link } from "react-router-dom";
+import { Header, Container, Segment, Image, Item, Embed, Label } from 'semantic-ui-react';
 import { DataContext } from '../components/DataProvider';
+import routes from "./../utils/routes";
+
+const baseRoute = routes.baseRoute;
+
+const Episodes = ({eps, epId}) => {
+    return (
+        <Label.Group style={{paddingTop: '20px'}}>
+        {
+            eps.map(dt => (
+                <Label
+                    as={Link}
+                    key={dt.title}
+                    content={dt.title}
+                    icon='mail'
+                    active={(epId === dt.id)}
+                    href={`${baseRoute}/watch/${dt.parentId}/${dt.id}`}
+                    to={`${baseRoute}/watch/${dt.parentId}/${dt.id}`}
+                />
+            ))
+        }
+        </Label.Group>
+    );
+};
 
 const WatchVideo = () => {
     const values = useContext(DataContext);
-    const { name } = useParams();
+    const { name, subname } = useParams();
     
-    const item = values.data.filter(d => name === d.id)[0];
+    let item = values.data.filter(d => name === d.id)[0];
     const [ imdbInfo, setImdbInfo ] = useState(null);
 
     useEffect(() => {
@@ -19,6 +43,23 @@ const WatchVideo = () => {
     }, [item]);
 
     const extras = item && item.widerImgUrl ? { placeholder: item.widerImgUrl } : {};
+
+    let eps = [];
+    if(item) {
+        eps = values.subData[item.id] || [];
+    }
+
+    let epId = subname;
+    if(!epId) {
+        if(eps.length > 0) {
+            epId = eps[0].id;
+        }
+    }
+
+    if(eps.length > 0) {
+        let { title, url, type } = eps.filter(d => epId === d.id)[0] || {};
+        item = { ...item, title, url, type };
+    }
 
     return (
         <Container>
@@ -46,6 +87,7 @@ const WatchVideo = () => {
                     {...extras}
                 />))
             }
+            <Episodes eps={eps} epId={epId} />
             { imdbInfo && (
                     <Item.Group
                         items={[{
