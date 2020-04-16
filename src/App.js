@@ -6,6 +6,7 @@ import Home from './containers/Home';
 import Movies from './containers/Movies';
 import TvSeries from './containers/TvSeries';
 import WatchVideo from './containers/WatchVideo';
+import DetectRouteChange from './components/DetectRouteChange';
 import routes from "./utils/routes"
 
 const baseRoute = routes.baseRoute;
@@ -14,6 +15,7 @@ function App() {
   return (
     <Router>
       <div>
+        <DetectRouteChange />
         <AppMenu />
         <Switch>
           <Route exact path={`${baseRoute}/`}>
