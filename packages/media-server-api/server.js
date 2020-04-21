@@ -1,4 +1,6 @@
 const express = require('express');
+const https = require('https');
+const fs = require('fs');
 const path = require('path');
 const checker = require('./api/checker');
 const movies = require('./api/movies');
@@ -27,6 +29,14 @@ app.get('/movies', movies);
 
 app.get('/video/:id', video);
 
-app.listen(9000, function () {
-  console.log('Listening on port 9000!')
-});
+// app.listen(9000, function () {
+//   console.log('Listening on port 9000!')
+// });
+
+// we will pass our 'app' to 'https' server
+https.createServer({
+  key: fs.readFileSync('./key.pem'),
+  cert: fs.readFileSync('./cert.pem'),
+  passphrase: 'sagar'
+}, app)
+.listen(9000);
