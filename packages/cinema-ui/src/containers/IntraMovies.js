@@ -3,14 +3,15 @@ import { Container } from 'semantic-ui-react';
 import { DataContext } from '../components/DataProvider';
 import VideoCardGroup from '../components/VideoCardGroup';
 
-const Home = () => {
+const IntraMovies = () => {
     const values = useContext(DataContext);
+    console.log(values);
     
     return (
         <Container>
-            <VideoCardGroup list={values.data} />
+            <VideoCardGroup intra list={values.cloudData} />
         </Container>
     );
 };
 
-export default Home;
+export default IntraMovies;

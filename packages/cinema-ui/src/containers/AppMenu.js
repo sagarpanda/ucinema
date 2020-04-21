@@ -40,6 +40,17 @@ const AppMenu = ({ location }) => {
             href={`${baseRoute}/tv-series`}
             to={`${baseRoute}/tv-series`}
           />
+          {
+            values.intranet && (
+              <Menu.Item
+                as={Link}
+                name='intra-movies'
+                active={activeItem === `${baseRoute}/intra-movies`}
+                href={`${baseRoute}/intra-movies`}
+                to={`${baseRoute}/intra-movies`}
+              />
+            )
+          }
           <Menu.Menu position='right'>
             <Menu.Item>
               <Responsive

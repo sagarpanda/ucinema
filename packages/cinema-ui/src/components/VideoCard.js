@@ -6,10 +6,11 @@ import './VideoCard.css';
 
 const baseRoute = routes.baseRoute;
 
-const VideoCard = ({ id, title, imgUrl, createdDate }) => {
+const VideoCard = ({ id, title, imgUrl, createdDate, intra }) => {
     const gUrl = imgUrl || 'https://i.imgur.com/0FX7ZPe.jpg';
+    const href = intra ? `${baseRoute}/intra/watch/${id}` : `${baseRoute}/watch/${id}`;
     return (
-        <Card as={Link} href={`${baseRoute}/watch/${id}`} to={`${baseRoute}/watch/${id}`} className="video-card">
+        <Card as={Link} href={href} to={href} className="video-card">
             <Image className="fixed-height" size="medium" src={gUrl} wrapped ui={false} />
             <Card.Content className="content-over-image">
                 {/*<Card.Meta>

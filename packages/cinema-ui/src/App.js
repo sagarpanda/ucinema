@@ -5,7 +5,9 @@ import AppMenu from './containers/AppMenu';
 import Home from './containers/Home';
 import Movies from './containers/Movies';
 import TvSeries from './containers/TvSeries';
+import IntraMovies from './containers/IntraMovies';
 import WatchVideo from './containers/WatchVideo';
+import IntraWatchVideo from './containers/IntraWatchVideo';
 import DetectRouteChange from './components/DetectRouteChange';
 import routes from "./utils/routes"
 
@@ -29,6 +31,12 @@ function App() {
           </Route>
           <Route path={`${baseRoute}/watch/:name/:subname?`}>
             <WatchVideo />
+          </Route>
+          <Route path={`${baseRoute}/intra-movies`}>
+            <IntraMovies />
+          </Route>
+          <Route path={`${baseRoute}/intra/watch/:name/:subname?`}>
+            <IntraWatchVideo />
           </Route>
         </Switch>
       </div>
