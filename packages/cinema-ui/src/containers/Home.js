@@ -5,7 +5,6 @@ import VideoCardGroup from '../components/VideoCardGroup';
 
 const Home = () => {
     const values = useContext(DataContext);
-    console.log(values);
     
     return (
         <Container>

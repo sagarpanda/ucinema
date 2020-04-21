@@ -8,7 +8,7 @@ const VideoCardGroup = ({ list, intra }) => {
         {
             list.map(item => (
               <VideoCard
-                intra
+                intra={intra}
                 key={item.id}
                 id={item.id}
                 title={item.title}
