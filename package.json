@@ -6,6 +6,7 @@
   "main": "index.js",
   "scripts": {
     "bootstrap": "lerna bootstrap",
+    "build": "lerna run build --scope=@ucinema/cinema-ui",
     "start:ui": "lerna run start --scope=@ucinema/cinema-ui",
     "start:api": "lerna run start --scope=@ucinema/media-server-api --stream",
     "test": "echo \"Error: no test specified\" && exit 1"
