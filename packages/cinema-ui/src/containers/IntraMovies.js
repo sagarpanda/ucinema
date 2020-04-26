@@ -11,7 +11,7 @@ const IntraMovies = () => {
     return (
         <Container>
             <Helmet>
-                <title>uCinema</title>
+                <title>IntraMovies | uCinema</title>
                 <meta name="description" content="Watch movies on uCinema" />
             </Helmet>
             <VideoCardGroup intra list={values.cloudData} />
