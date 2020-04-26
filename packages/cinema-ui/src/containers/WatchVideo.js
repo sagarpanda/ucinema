@@ -1,6 +1,7 @@
 import React, { useContext, useEffect, useState } from 'react';
 import { useParams } from 'react-router';
-import { Link } from "react-router-dom";
+import { Link } from 'react-router-dom';
+import { Helmet } from 'react-helmet';
 import { Header, Container, Segment, Image, Item, Embed, Label } from 'semantic-ui-react';
 import { DataContext } from '../components/DataProvider';
 import routes from "./../utils/routes";
@@ -63,6 +64,12 @@ const WatchVideo = () => {
 
     return (
         <Container>
+            { item && (
+                <Helmet>
+                    <title>Watch {item.title} | uCinema</title>
+                    <meta name="description" content={`Watch ${item.title}`} />
+                </Helmet>
+            ) }
             { values.isLoading && (
                 <Segment loading>
                     <Image src='https://react.semantic-ui.com/images/wireframe/paragraph.png' />
