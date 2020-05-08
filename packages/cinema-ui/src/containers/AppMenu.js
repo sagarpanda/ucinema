@@ -7,7 +7,6 @@ import routes from "../utils/routes";
 import useSearch from '../hooks/useSearch';
 
 const baseRoute = routes.baseRoute;
-const bottomSpacing = '20px';
 
 const AppMenu = ({ location }) => {
     const activeItem = location.pathname;
@@ -68,7 +67,7 @@ const AppMenu = ({ location }) => {
         <Responsive
           as={Container}
           maxWidth={550}
-          style={{ padding: `${bottomSpacing} 0`, marginTop: '40px' }}>
+          style={{ padding: '60px 0 20px' }}>
           <Search
             loading={data.loading}
             results={data.results}
@@ -82,7 +81,7 @@ const AppMenu = ({ location }) => {
         <Responsive
           as="div"
           minWidth={550}
-          style={{ paddingBottom: bottomSpacing, marginTop: '64px' }}
+          style={{ paddingBottom: 84 }}
         />
       </>
     );
